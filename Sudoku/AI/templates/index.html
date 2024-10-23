@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver & Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Sudoku Solver & Generator</h1>
+    <div id="sudoku-board">
+        {% for i in range(9) %}
+            <div class="row">
+                {% for j in range(9) %}
+                    <input type="number" min="0" max="9" id="cell-{{ i }}-{{ j }}" class="cell" />
+                    {% if j == 2 or j == 5 %}
+                        <div class="separator"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% if i == 2 or i == 5 %}
+                <div class="separator-row"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div id="button-container">
+        <button id="generate-button">Generate Sudoku</button>
+        <button id="solve-button">Solve Sudoku</button>
+    </div>
+    <div id="result"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
